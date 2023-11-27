@@ -1,0 +1,44 @@
+@import './variables.scss';
+
+.template-carousel {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 24px;
+  position: relative;
+  left: -10rem;
+  margin-top: 5rem;
+  height: 360px;
+
+  .template-card {
+    border-radius: $border-radius;
+    padding: 2rem;
+    min-width: 256px;
+    position: relative;
+
+    h3 {
+      margin-bottom: 0.5rem;
+    }
+
+    .template-card-img {
+      mix-blend-mode: luminosity;
+      position: absolute;
+      bottom: 0;
+    }
+
+    &:nth-child(3n - 2) {
+      background-color: $primary-blue;
+      height: 60%;
+    }
+
+    &:nth-child(3n - 1) {
+      background-color: $primary-red;
+      height: 100%;
+    }
+
+    &:nth-child(3n) {
+      background-color: $primary-yellow;
+      height: 80%;
+    }
+  }
+}

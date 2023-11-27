@@ -1,0 +1,12 @@
+export const ARROW_EXTERNAL = 'arrow external';
+export const ARROW_RIGHT = 'arrow right';
+export const CHECKMARK = 'checkmark';
+export const CHEVRON_DOWN = 'chevron down';
+export const CLOSE = 'close';
+export const DOTS = 'dots';
+export const DRAGGABLE = 'draggable';
+export const EDIT = 'edit';
+export const HAMBURGER = 'hamburger';
+export const PLUS = 'plus';
+export const SEARCH = 'search';
+export const SHARE = 'share';

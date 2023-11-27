@@ -1,0 +1,46 @@
+@import './variables.scss';
+
+.button {
+  border-radius: 48px;
+  padding: 8px 8px 8px 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  cursor: pointer;
+
+  .icon-wrapper {
+    background-color: $box-background;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    border-radius: 50%;
+  }
+
+  &.button-primary {
+    background-color: $black;
+    color: $white;
+    border: solid 1px $black;
+  }
+
+  &.button-secondary {
+    background-color: $white;
+    color: $black;
+    border: solid 1px $box-border;
+  }
+
+  &.button-tertiary {
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    gap: 8px;
+    color: $gray;
+
+    .icon-wrapper {
+      padding: 0;
+      background-color: transparent;
+      border-radius: 0;
+    }
+  }
+}
