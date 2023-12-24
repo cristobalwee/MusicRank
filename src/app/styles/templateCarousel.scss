@@ -6,29 +6,34 @@
   align-items: flex-start;
   gap: 24px;
   position: relative;
-  left: -10rem;
   margin-top: 5rem;
-  height: 360px;
+  height: 340px;
 
   .template-card {
     border-radius: $border-radius;
     padding: 2rem;
-    min-width: 256px;
+    min-width: 248px;
     position: relative;
 
     h3 {
       margin-bottom: 0.5rem;
     }
 
+    button {
+      color: $gray;
+    }
+
     .template-card-img {
       mix-blend-mode: luminosity;
       position: absolute;
+      object-fit: contain;
+      max-height: 60%;
       bottom: 0;
     }
 
     &:nth-child(3n - 2) {
       background-color: $primary-blue;
-      height: 60%;
+      height: 65%;
     }
 
     &:nth-child(3n - 1) {

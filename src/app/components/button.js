@@ -53,12 +53,14 @@ export default function Button({ as, text, icon, onClick, href = null, active, s
       onClick={ onClick }
     >
       { text && as !== 'icon' && <span className='headline size-6'>{ text }</span> }
-      <div className='icon-wrapper'>
-        <Image
-          alt={ `${btnIcon} icon` }
-          src={ btnIcon }
-        />
-      </div>
+      { icon && (
+        <div className='icon-wrapper'>
+          <Image
+            alt={ `${btnIcon} icon` }
+            src={ btnIcon }
+          />
+        </div>
+      )}
     </button>
   );
 }

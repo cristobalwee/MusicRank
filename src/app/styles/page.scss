@@ -1,3 +1,5 @@
+@import './variables.scss';
+
 .page {
   overflow: hidden;
 }
@@ -8,5 +10,58 @@
 }
 
 .home-landing {
-  padding-top: 30vh;
+  padding-top: 25vh;
+
+  .content {
+    padding: 0 4rem;
+  }
+}
+
+.home-rankings {
+  .rankings-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 20px;
+    height: clamp(320px, 35vh, 450px);
+    margin: 24px 0 20px;
+
+    .ranking-card {
+      background-color: $box-background;
+      border-radius: $border-radius;
+      padding: 2rem;
+
+      > .headline {
+        margin-bottom: 0.5rem;
+      }
+
+      button {
+        color: $gray;
+      }
+    }
+
+    &:last-child {
+      grid-template-columns: 1fr 2fr 1fr;
+    }
+  }
+}
+
+.home-about {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  &-left {
+    max-width: min(35vw, 600px);
+
+    h1 {
+      margin-bottom: 2rem;
+    }
+  }
+
+  &-right {
+    background-color: $primary-red;
+    border-radius: $border-radius;
+    width: 40vw;
+    height: min(80vh, 800px);
+  }
 }

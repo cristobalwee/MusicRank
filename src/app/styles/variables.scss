@@ -9,6 +9,7 @@ $primary-blue-dark: #ABC5D8;
 
 $box-background: #F8F7F5;
 $box-border: #E4E4E4;
+$box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.08);
 $text-secondary: #646464;
 
 $black: #111;
@@ -19,3 +20,20 @@ $gray: #444;
 $border-radius: 20px;
 $space: 0.5rem;
 $max-width: 1600px;
+
+// Easing functions
+$easing-swift: cubic-bezier(.13, .69, .14, 1);
+$easing-in-out: cubic-bezier(.82, .22, .11, .96);
+
+// Fonts
+$base-font-size: clamp(2.25em, 5vw, 4em);
+
+@font-face {
+  font-family: 'SharpSans';
+  src: url('/fonts/SharpSans-Medium.otf');
+}
+
+@font-face {
+  font-family: 'Calibre';
+  src: url('/fonts/calibre-light.woff2');
+}

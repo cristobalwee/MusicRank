@@ -1,15 +1,5 @@
 @import './variables.scss';
 
-@font-face {
-  font-family: 'SharpSans';
-  src: url('/fonts/SharpSans-Medium.otf');
-}
-
-@font-face {
-  font-family: 'Calibre';
-  src: url('/fonts/calibre-light.woff2');
-}
-
 * {
   margin: 0;
 }
@@ -24,19 +14,19 @@ body {
   font-weight: normal;
 
   &.size-1 {
-    font-size: 64px;
+    font-size: $base-font-size;
   }
   
   &.size-2 {
-    font-size: 56px;
+    font-size: calc($base-font-size * 0.875); 
   }
   
   &.size-3 {
-    font-size: 48px;
+    font-size: calc($base-font-size * 0.75);
   }
   
   &.size-4 {
-    font-size: 32px;
+    font-size: calc($base-font-size * 0.5);
   }
   
   &.size-5 {
@@ -66,11 +56,11 @@ body {
 }
 
 .page {
-  padding: 4rem;
+  padding: 3rem;
 }
 
 .content {
-  max-width: $max-width;
+  max-width: min($max-width, 90vw);
   margin: 0 auto;
 }
 
@@ -79,5 +69,5 @@ body {
 }
 
 .mb-2 {
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
