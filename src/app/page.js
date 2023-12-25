@@ -17,25 +17,21 @@ export default function Home() {
   useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
       setFooterIntersecting(entry.isIntersecting);
+    }, {
+      threshold: 0.25
     });
 
-    if (footerRef.current) {
-      observer.observe(footerRef.current);
-    }
-
-    console.log(footerIsIntersecting);
+    if (footerRef.current) observer.observe(footerRef.current);
 
     return () => {
-      if (footerRef.current) {
-        observer.unobserve(footerRef.current);
-      }
+      if (footerRef.current) observer.unobserve(footerRef.current);
     }
-  }, [footerRef]);
+  }, [footerRef, footerIsIntersecting]);
 
   return (
     <main className='page'>
       <Header />
-      <Fab />
+      <Fab hide={ footerIsIntersecting } />
       <section className='section home-landing'>
         <div className='content'>
           <p className='paragraph size-1 text-secondary mb-2'>Share your top picks</p>
