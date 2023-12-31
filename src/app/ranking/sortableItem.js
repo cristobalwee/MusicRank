@@ -1,40 +1,33 @@
-import React from 'react';
-import Image from 'next/image';
-import { useSortable } from '@dnd-kit/sortable';
-import { CSS } from '@dnd-kit/utilities';
+import React from "react";
+import { useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
+import Item from "./item";
 
-export default function SortableItem(props) {
-  const { title, subtitle, img } = props;
+const SortableItem = (props) => {
   const {
+    isDragging,
     attributes,
     listeners,
     setNodeRef,
     transform,
-    transition,
-  } = useSortable({id: props.id});
-  
+    transition
+  } = useSortable({ id: props.id });
+
   const style = {
     transform: CSS.Transform.toString(transform),
-    transition,
+    transition: transition || undefined,
   };
-  
+
   return (
-    <div 
-      ref={setNodeRef} 
-      className='sortable-item' 
-      style={style} 
-      {...attributes} 
+    <Item
+      ref={setNodeRef}
+      style={style}
+      withOpacity={isDragging}
+      {...props}
+      {...attributes}
       {...listeners}
-    >
-      <Image
-        alt={ title }
-        className='ranking-card-list-item-img'
-        src={ img }
-      />
-      <div className='ranking-card-list-item-content'>
-        <h4 className='headline size-5'>{ title }</h4>
-        <p className='paragraph size-1 text-secondary'>{ subtitle }</p>
-      </div>
-    </div>
+    />
   );
-}
+};
+
+export default SortableItem;
