@@ -1,0 +1,54 @@
+@import './variables.scss';
+
+.ranking-card {
+  background-color: $box-background;
+  border-radius: $border-radius;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: relative;
+
+  &-long {
+    flex-direction: row;
+  }
+
+  &-title {
+    > .headline {
+      margin-bottom: 0.5rem;
+    }
+
+    button {
+      color: $gray;
+    }
+  }
+
+  &-list {
+    background-color: $white;
+    border-radius: $border-radius-inner;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    min-width: 40%;
+
+    &-item {
+      display: flex;
+      gap: 1rem;
+
+      h5 {
+        width: 0.5em;
+      }
+
+      img {
+        height: 40px;
+        width: 40px;
+        border-radius: 6px;
+      }
+
+      .headline {
+        margin-bottom: 4px;
+      }
+    }
+  }
+}

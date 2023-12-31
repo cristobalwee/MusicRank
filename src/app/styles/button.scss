@@ -8,6 +8,17 @@
   align-items: center;
   gap: 24px;
   cursor: pointer;
+  transition: transform 0.25s $easing-swift;
+
+  &:not(.button-tertiary) {
+    &:hover {
+      transform: scale(1.03);
+    }
+  
+    &:active {
+      transform: scale(0.97);
+    }
+  }
 
   .icon-wrapper {
     background-color: $box-background;

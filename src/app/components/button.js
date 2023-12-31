@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import ArrowExternal from '../../../public/icon/Arrow-external.svg';
 import ArrowRight from '../../../public/icon/Arrow-right.svg';
 import Checkmark from '../../../public/icon/Checkmark.svg';
@@ -47,7 +48,7 @@ const icons = {
 export default function Button({ as, text, icon, onClick, href = null, active, small }) {
   const btnIcon = icons[icon];
 
-  return (
+  const btn = (
     <button 
       className={ `button button-${as}`} 
       onClick={ onClick }
@@ -63,4 +64,10 @@ export default function Button({ as, text, icon, onClick, href = null, active, s
       )}
     </button>
   );
+
+  return href ? (
+    <Link href={ href }>
+      { btn }
+    </Link>
+  ) : btn;
 }

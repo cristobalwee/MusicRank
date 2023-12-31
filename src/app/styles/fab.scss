@@ -12,6 +12,6 @@
   transition: transform 0.6s $easing-swift;
 
   &.hidden {
-    transform: translate(-50%, 150%);
+    transform: translate(-50%, calc(100% + 2rem));
   }
 }

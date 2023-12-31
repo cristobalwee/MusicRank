@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import classnames from 'classnames';
 import Image from 'next/image';
+import Link from 'next/link';
 import Button from './button';
 import Search from './search';
 import Logo from '../../../public/img/logo_primary.svg';
@@ -13,11 +14,13 @@ export default function Header() {
 
   return (
     <nav className='header'>
-      <Image
-        alt='MusicRank Logo'
-        className='logo-img'
-        src={ Logo }
-      />
+      <Link href='/'>
+        <Image
+          alt='MusicRank Logo'
+          className='logo-img'
+          src={ Logo }
+        />
+      </Link>
       <div className='menu'>
         <Button 
           as='secondary' 
@@ -37,6 +40,7 @@ export default function Header() {
               as='tertiary'
               onClick={ () => console.log('click') }
               text='About'
+              href='/about'
             />
             <Button 
               as='tertiary'

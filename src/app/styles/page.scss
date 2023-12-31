@@ -13,31 +13,26 @@
   padding-top: 25vh;
 
   .content {
-    padding: 0 4rem;
+    padding: 0 clamp(2rem, 6vw, 8rem);
   }
 }
 
 .home-rankings {
+  &-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    button {
+      color: $gray;
+    }
+  }
+
   .rankings-row {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;
     gap: 20px;
-    height: clamp(320px, 35vh, 450px);
     margin: 24px 0 20px;
-
-    .ranking-card {
-      background-color: $box-background;
-      border-radius: $border-radius;
-      padding: 2rem;
-
-      > .headline {
-        margin-bottom: 0.5rem;
-      }
-
-      button {
-        color: $gray;
-      }
-    }
 
     &:last-child {
       grid-template-columns: 1fr 2fr 1fr;
