@@ -1,19 +1,12 @@
-import React, { forwardRef, CSSProperties } from 'react';
+import React from 'react';
 import Image from 'next/image';
-import { useSortable } from '@dnd-kit/sortable';
+import Draggable from '../../../public/icon/Draggable.svg';
 
-export default React.forwardRef(({ title, subtitle, id, img, withOpacity, isDragging, style, ...rest }, ref) => {
-  const {
-    attributes,
-    listeners,
-    transition,
-  } = useSortable({ id });
+export default React.forwardRef(({ title, subtitle, id, img, withOpacity, isDragging, style, attributes, listeners, ...rest }, ref) => {
   const inlineStyles = {
     opacity: withOpacity ? '0.5' : '1',
     transformOrigin: '50% 50%',
-    cursor: isDragging ? 'grabbing' : 'grab',
     boxShadow: isDragging  ? '0px 2px 12px 0px rgba(0, 0, 0, 0.08)' : 'none',
-    transition,
     ...style,
   };
   
@@ -21,19 +14,30 @@ export default React.forwardRef(({ title, subtitle, id, img, withOpacity, isDrag
     <div 
       ref={ref}
       className='sortable-item' 
-      style={inlineStyles} 
-      {...attributes} 
-      {...listeners}
+      style={ inlineStyles } 
       {...rest}
     >
-      <Image
-        alt={ title }
-        className='ranking-card-list-item-img'
-        src={ img }
-      />
-      <div className='ranking-card-list-item-content'>
-        <h4 className='headline size-5'>{ title }</h4>
-        <p className='paragraph size-1 text-secondary'>{ subtitle }</p>
+      <div className='sortable-item-content'>
+        <Image
+          alt={ title }
+          className='sortable-item-img'
+          src={ img }
+        />
+        <div>
+          <h4 className='headline size-5'>{ title }</h4>
+          <p className='paragraph size-1 text-secondary'>{ subtitle }</p>
+        </div>
+      </div>
+      <div
+        className='sortable-item-draggable'
+        style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
+        {...attributes}
+        {...listeners}
+      >
+        <Image
+          alt='Drag handle'
+          src={ Draggable }
+        />
       </div>
     </div>
   );

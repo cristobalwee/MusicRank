@@ -6,9 +6,7 @@ import {
   TouchSensor,
   DragOverlay,
   useSensor,
-  useSensors,
-  DragStartEvent,
-  DragEndEvent,
+  useSensors
 } from "@dnd-kit/core";
 import {
   arrayMove,
@@ -28,45 +26,47 @@ export default function RankingList() {
       title: 'HELLMODE',
       subtitle: 'Jeff Rosenstock',
       img: Hellmode,
-      id: 1
+      id: '1'
     }, {
       title: 'Javelin',
       subtitle: 'Sufjan Stevens',
       img: Javelin,
-      id: 2
+      id: '2'
     }, {
       title: '3D Country',
       subtitle: 'Geese',
       img: Country,
-      id: 3
+      id: '3'
     }, {
       title: 'Lahai',
       subtitle: 'Sampha',
       img: Lahai,
-      id: 4
+      id: '4'
     }
   ]);
   const [activeId, setActiveId] = useState(null);
   const sensors = useSensors(useSensor(MouseSensor), useSensor(TouchSensor));
-  const activeItem = items[activeId - 1];
+  const activeItem = items.find(obj => obj.id === activeId);
+  console.log(activeId, items);
 
   const handleDragStart = useCallback((event) => {
     setActiveId(event.active.id);
   }, []);
+
   const handleDragEnd = useCallback((event) => {
     const { active, over } = event;
 
-    if (active.id !== over?.id) {
-      setItems((items) => {
-        const oldIndex = items.indexOf(active.id);
-        const newIndex = items.indexOf(over.id);
-
-        return arrayMove(items, oldIndex, newIndex);
+    if (active?.id !== over?.id) {
+      setItems((prev) => {
+        const activeIndex = prev.findIndex((item) => item.id === active?.id);
+        const overIndex = prev.findIndex((item) => item.id === over?.id);
+        return arrayMove(prev, activeIndex, overIndex);
       });
     }
 
     setActiveId(null);
   }, []);
+
   const handleDragCancel = useCallback(() => {
     setActiveId(null);
   }, []);
@@ -93,8 +93,8 @@ export default function RankingList() {
       <DragOverlay adjustScale style={{ transformOrigin: "0 0 " }}>
         {activeId ? (
           <Item
-            id={activeId}
-            key={ activeItem.id }
+            id={ activeId }
+            key={ activeId }
             title={ activeItem.title }
             subtitle={ activeItem.subtitle }
             img={ activeItem.img }

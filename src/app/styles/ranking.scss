@@ -2,7 +2,7 @@
 
 .ranking {
   &-button-container {
-    margin: 2rem 0;
+    margin: 2rem 0 3rem;
     display: flex;
     gap: 1rem;
   }
@@ -32,19 +32,36 @@
 .sortable-item {
   background-color: $box-background;
   border-radius: $border-radius;
-  cursor: pointer;
   display: flex;
+  justify-content: space-between;
   gap: 1.5rem;
   padding: 2rem;
   align-items: center;
 
-  img {
-    height: 72px;
-    width: 72px;
-    border-radius: 12px;
+  &-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    img {
+      height: 72px;
+      width: 72px;
+      border-radius: $border-radius-inner;
+    }
+
+    .headline {
+      margin-bottom: 8px;
+    }
   }
 
-  .headline {
-    margin-bottom: 8px;
+  &-draggable {
+    border-radius: 6px;
+    padding: 8px 4px;
+    transition: background-color 0.25s $easing-swift;
+    display: flex;
+
+    &:hover {
+      background-color: $box-background-hover;
+    }
   }
 }

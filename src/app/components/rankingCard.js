@@ -13,7 +13,7 @@ export default function RankingCard({ long = false, title, ranking = [] }) {
       </div>
       <div className='ranking-card-list'>
         { ranking.map((item, i) => (
-          <div className='ranking-card-list-item'>
+          <div className='ranking-card-list-item' key={ i }>
             <h5 className='headline size-6 text-secondary'>{ i + 1 }.</h5>
             <Image
               alt={ item.alt }

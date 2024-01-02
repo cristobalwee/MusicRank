@@ -23,9 +23,9 @@ const SortableItem = (props) => {
       ref={setNodeRef}
       style={style}
       withOpacity={isDragging}
+      attributes={ attributes }
+      listeners={listeners}
       {...props}
-      {...attributes}
-      {...listeners}
     />
   );
 };
