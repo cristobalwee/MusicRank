@@ -4,6 +4,7 @@
   border-top: solid 1px $box-border;
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
   padding: 3rem 2rem 2rem;
 
   &-left {
@@ -19,6 +20,7 @@
   &-right {
     display: flex;
     gap: 12rem;
+    flex-direction: column;
 
     &-navigation, &-socials {
       display: flex;
@@ -34,5 +36,15 @@
         margin-bottom: 36px;
       }
     }
+  }
+
+  @media (min-width: $breakpoint-xs) {
+    &-right {
+      flex-direction: row;
+    }
+  }
+
+  @media (min-width: $breakpoint-md) {
+    flex-direction: row;
   }
 }

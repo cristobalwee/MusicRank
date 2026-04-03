@@ -30,7 +30,7 @@ a {
   }
   
   &.size-4 {
-    font-size: calc($base-font-size * 0.5);
+    font-size: max(20px, calc($base-font-size * 0.5));
   }
   
   &.size-5 {
@@ -64,11 +64,11 @@ a {
 }
 
 .page {
-  padding: 3rem;
+  padding: 2rem;
 }
 
 .content {
-  max-width: min($max-width, 90vw);
+  max-width: min($max-width, 88vw);
   margin: 0 auto;
 }
 
@@ -78,4 +78,10 @@ a {
 
 .mb-2 {
   margin-bottom: 1.5rem;
+}
+
+@media (min-width: $breakpoint-xs) {
+  .page {
+    padding: 3rem max(4vw, 3rem);
+  }
 }

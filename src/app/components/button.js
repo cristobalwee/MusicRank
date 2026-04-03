@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import classnames from 'classnames';
 import ArrowExternal from '../../../public/icon/Arrow-external.svg';
 import ArrowRight from '../../../public/icon/Arrow-right.svg';
 import Checkmark from '../../../public/icon/Checkmark.svg';
@@ -45,12 +46,12 @@ const icons = {
   [SHARE]: Share
 };
 
-export default function Button({ as, text, icon, onClick, href = null, active, small }) {
+export default function Button({ as, text, icon, onClick, href = null, className, active, small, highContrast }) {
   const btnIcon = icons[icon];
 
   const btn = (
     <button 
-      className={ `button button-${as}`} 
+      className={ classnames(`button button-${as}`, className, { 'button-small': small, 'high-contrast': highContrast }) } 
       onClick={ onClick }
     >
       { text && as !== 'icon' && <span className='headline size-6'>{ text }</span> }

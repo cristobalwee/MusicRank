@@ -1,5 +1,5 @@
 'use client'
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Image from 'next/image'
 import Layout from '../components/layout'
 import Button from '../components/button'
@@ -7,18 +7,55 @@ import Logo from '../../../public/img/logo_empty.svg'
 import { CHEVRON_DOWN, EDIT, CHECKMARK } from '../constants/icons';
 import RankingList from './rankingList';
 import NonSSRWrapper from '../components/nonSSRWrapper';
+import Menu from '../components/menu';
 import '../styles/ranking.scss';
+import { MobileContext } from '../lib/mobileContext';
+import { revalidatePath } from 'next/cache';
 
 export default function Home({ isEmpty = false }) {
+  const [isReversed, setReverse] = useState(false);
+
   return (
     <NonSSRWrapper>
-      <Layout>
+      <Layout hasSearch>
         <section className='section ranking content'>
           <p className='paragraph size-1 text-secondary mb-2'>New Ranking</p>
           <h1 className='headline size-2 text-secondary'>Untitled Ranking</h1>
           <div className='ranking-button-container'>
-            <Button as='secondary' icon={ CHEVRON_DOWN } text='Ranking: Songs' /> 
-            <Button as='secondary' icon={ EDIT } text='Edit title' /> 
+            <Menu
+              text='Ranking: Albums'
+              icon={ CHEVRON_DOWN }
+              className='mobile-hide'
+              items={[
+                <Button 
+                  as='tertiary'
+                  onClick={ () => console.log('click') }
+                  text='Browse'
+                />,
+                <Button 
+                  as='tertiary'
+                  text='About'
+                  href='/about'
+                />
+              ]}
+            />
+            <Menu
+              text='Order: Top to bottom'
+              icon={ CHEVRON_DOWN }
+              className='mobile-hide'
+              items={[
+                <Button 
+                  as='tertiary'
+                  onClick={ () => console.log('click') }
+                  text='Browse'
+                />,
+                <Button 
+                  as='tertiary'
+                  text='About'
+                  href='/about'
+                />
+              ]}
+            />
             <Button as='secondary' icon={ CHECKMARK } text='Finish ranking' /> 
           </div>
           { isEmpty ? (
@@ -32,7 +69,7 @@ export default function Home({ isEmpty = false }) {
           </div>
           ) : (
             <div className='ranking-populated'>
-              <RankingList />
+              <RankingList isReversed={ isReversed } />
             </div>
           )}
         </section>

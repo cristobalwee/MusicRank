@@ -4,15 +4,15 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  gap: 24px;
+  gap: 20px;
   position: relative;
   margin-top: 5rem;
-  height: 340px;
+  height: 320px;
 
   .template-card {
     border-radius: $border-radius;
     padding: 2rem;
-    min-width: 248px;
+    min-width: 232px;
     position: relative;
 
     h3 {
@@ -28,6 +28,7 @@
       position: absolute;
       object-fit: contain;
       max-height: 60%;
+      max-width: calc(100% - 4rem);
       bottom: 0;
     }
 

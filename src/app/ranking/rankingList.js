@@ -1,9 +1,10 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect, useContext } from 'react';
 import {
   DndContext,
   closestCenter,
   MouseSensor,
   TouchSensor,
+  KeyboardSensor,
   DragOverlay,
   useSensor,
   useSensors
@@ -18,36 +19,67 @@ import Hellmode from '../../../public/img/Jeff_Rosenstock_Hellmode.jpg';
 import Country from '../../../public/img/3D_Country.jpg';
 import Lahai from '../../../public/img/Sampha_Lahai.png'
 import SortableItem from "./sortableItem";
-import Item from "./item";
+import Item from './item';
 
-export default function RankingList() {
-  const [items, setItems] = useState([
-    {
-      title: 'HELLMODE',
-      subtitle: 'Jeff Rosenstock',
-      img: Hellmode,
-      id: '1'
-    }, {
-      title: 'Javelin',
-      subtitle: 'Sufjan Stevens',
-      img: Javelin,
-      id: '2'
-    }, {
-      title: '3D Country',
-      subtitle: 'Geese',
-      img: Country,
-      id: '3'
-    }, {
-      title: 'Lahai',
-      subtitle: 'Sampha',
-      img: Lahai,
-      id: '4'
-    }
-  ]);
+const data = [
+  {
+    title: 'HELLMODE',
+    subtitle: 'Jeff Rosenstock',
+    img: Hellmode,
+    id: '1'
+  }, {
+    title: 'Javelin',
+    subtitle: 'Sufjan Stevens',
+    img: Javelin,
+    id: '2'
+  }, {
+    title: '3D Country',
+    subtitle: 'Geese',
+    img: Country,
+    id: '3'
+  }, {
+    title: 'Lahai',
+    subtitle: 'Sampha',
+    img: Lahai,
+    id: '4'
+  },
+  {
+    title: 'HELLMODE',
+    subtitle: 'Jeff Rosenstock',
+    img: Hellmode,
+    id: '5'
+  }, {
+    title: 'Javelin',
+    subtitle: 'Sufjan Stevens',
+    img: Javelin,
+    id: '6'
+  }, {
+    title: '3D Country',
+    subtitle: 'Geese',
+    img: Country,
+    id: '7'
+  }, {
+    title: 'Lahai',
+    subtitle: 'Sampha',
+    img: Lahai,
+    id: '8'
+  }
+];
+
+export default function RankingList({ isReversed }) {
+  const [items, setItems] = useState(data);
   const [activeId, setActiveId] = useState(null);
-  const sensors = useSensors(useSensor(MouseSensor), useSensor(TouchSensor));
+  const sensors = useSensors(
+    useSensor(MouseSensor), 
+    useSensor(TouchSensor, {
+      activationConstraint: {
+        delay: 150,
+        tolerance: 8,
+      },
+    }), 
+    useSensor(KeyboardSensor)
+  );
   const activeItem = items.find(obj => obj.id === activeId);
-  console.log(activeId, items);
 
   const handleDragStart = useCallback((event) => {
     setActiveId(event.active.id);
@@ -80,14 +112,19 @@ export default function RankingList() {
       onDragCancel={handleDragCancel}
     >
       <SortableContext items={items} strategy={rectSortingStrategy}>
-        {items.map((item) => (
-          <SortableItem 
-            key={ item.id }
-            id={ item.id }
-            title={ item.title }
-            subtitle={ item.subtitle }
-            img={ item.img }
-          />
+        {items.map((item, i) => (
+          <React.Fragment key={ i }>
+            <div className='sortable-item-index'>
+              <h3 className='headline size-4 text-secondary'>{ isReversed ? items.length - i : i + 1 }.</h3>
+            </div>
+            <SortableItem 
+              key={ item.id }
+              id={ item.id }
+              title={ item.title }
+              subtitle={ item.subtitle }
+              img={ item.img }
+            />
+          </React.Fragment>
         ))}
       </SortableContext>
       <DragOverlay adjustScale style={{ transformOrigin: "0 0 " }}>

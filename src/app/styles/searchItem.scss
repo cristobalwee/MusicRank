@@ -1,0 +1,38 @@
+@import './variables.scss';
+
+.search-item {
+  background-color: $white;
+  border-radius: $border-radius;
+  border: solid 1px $box-border;
+  padding: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &.high-density {
+    padding: 0;
+    border: none;
+    background: transparent;
+  }
+
+  &-left {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  h5 {
+    width: 0.5em;
+  }
+
+  img {
+    height: 72px;
+    width: 72px;
+    border-radius: 12px;
+  }
+
+  .headline {
+    margin-bottom: 4px;
+  }
+}

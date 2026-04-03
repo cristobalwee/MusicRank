@@ -9,9 +9,7 @@ export default function Home() {
     <Layout>
       <section className='section home-landing'>
         <div className='content'>
-          <p className='paragraph size-1 text-secondary mb-2'>Share your top picks</p>
-          <h1 className='headline size-1'>Rank your favorite music</h1>
-          <TemplateCarousel />
+          <h1 className='headline size-1'>We're music people</h1>
         </div>
       </section>
     </Layout>

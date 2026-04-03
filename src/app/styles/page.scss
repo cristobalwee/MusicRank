@@ -6,7 +6,7 @@
 
 .section {
   position: relative;
-  padding: 15vh 0;
+  padding: 10vh 0 15vh;
 }
 
 .home-landing {
@@ -30,12 +30,20 @@
 
   .rankings-row {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
     gap: 20px;
     margin: 24px 0 20px;
+    grid-template-areas: 'a' 'b' 'c';
 
-    &:last-child {
-      grid-template-columns: 1fr 2fr 1fr;
+    @media (min-width: $breakpoint-sm) {
+      grid-template-areas: 'a a' 'b c';
+    }
+
+    @media (min-width: $breakpoint-lg) {
+      grid-template-areas: 'a a b c';
+
+      &:last-child {
+        grid-template-areas: 'b a a c';
+      }
     }
   }
 }
@@ -46,17 +54,18 @@
   align-items: center;
 
   &-left {
-    max-width: min(35vw, 600px);
+    max-width: min(35vw, 520px);
+    margin-right: 5rem;
 
     h1 {
-      margin-bottom: 2rem;
+      margin-bottom: 1rem;
     }
   }
 
   &-right {
     background-color: $primary-red;
     border-radius: $border-radius;
-    width: 40vw;
+    width: min(40vw, 700px);
     height: min(80vh, 800px);
   }
 }

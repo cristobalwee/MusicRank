@@ -20,6 +20,12 @@
     }
   }
 
+  &.high-contrast {
+    .icon-wrapper {
+      background-color: $white;
+    }
+  }
+
   .icon-wrapper {
     background-color: $box-background;
     display: flex;
@@ -34,19 +40,19 @@
     }
   }
 
-  &.button-primary {
+  &-primary {
     background-color: $black;
     color: $white;
     border: solid 1px $black;
   }
 
-  &.button-secondary {
+  &-secondary {
     background-color: $white;
     color: $black;
     border: solid 1px $box-border;
   }
 
-  &.button-tertiary {
+  &-tertiary {
     padding: 0;
     border: none;
     background-color: transparent;
@@ -59,5 +65,18 @@
       background-color: transparent;
       border-radius: 0;
     }
+  }
+
+  &-icon {
+    padding: 0;
+    border: none;
+
+    .icon-wrapper {
+      padding: 14px;
+    }
+  }
+
+  > .headline {
+    white-space: nowrap;
   }
 }

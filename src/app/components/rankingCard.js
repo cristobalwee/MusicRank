@@ -4,9 +4,9 @@ import Button from './button'
 import { ARROW_RIGHT } from '../constants/icons';
 import '../styles/rankingCard.scss'
 
-export default function RankingCard({ long = false, title, ranking = [] }) {
+export default function RankingCard({ gridArea, long = false, title, ranking = [] }) {
   return (
-    <div className={ classnames('ranking-card', { 'ranking-card-long': long }) }>
+    <div style={{ gridArea }} className={ classnames('ranking-card', { 'ranking-card-long': long }) }>
       <div className='ranking-card-title'>
         <h3 className='headline size-6'>{ title }</h3>
         <Button as='tertiary' icon={ ARROW_RIGHT } text='Check it out' /> 
@@ -16,7 +16,7 @@ export default function RankingCard({ long = false, title, ranking = [] }) {
           <div className='ranking-card-list-item' key={ i }>
             <h5 className='headline size-6 text-secondary'>{ i + 1 }.</h5>
             <Image
-              alt={ item.alt }
+              alt={ item.title }
               className='ranking-card-list-item-img'
               src={ item.img }
             />

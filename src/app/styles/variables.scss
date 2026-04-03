@@ -23,12 +23,21 @@ $border-radius-inner: 12px;
 $space: 0.5rem;
 $max-width: 1600px;
 
+// Breakpoints
+$breakpoint-xxs: 480px;
+$breakpoint-xs: 640px;
+$breakpoint-sm: 768px;
+$breakpoint-md: 992px;
+$breakpoint-lg: 1200px;
+$breakpoint-xl: 1600px;
+$breakpoint-xxl: 2000px;
+
 // Easing functions
 $easing-swift: cubic-bezier(.13, .69, .14, 1);
 $easing-in-out: cubic-bezier(.82, .22, .11, .96);
 
 // Fonts
-$base-font-size: clamp(2.25em, 5vw, 4em);
+$base-font-size: clamp(2.25em, 4vw, 4em);
 
 @font-face {
   font-family: 'SharpSans';

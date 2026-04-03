@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import Image from 'next/image';
 import Link from 'next/link';
 import Button from './button';
+import Menu from './menu';
 import Search from './search';
 import Logo from '../../../public/img/logo_primary.svg';
 import { HAMBURGER } from '../constants/icons';
@@ -10,8 +11,6 @@ import { HAMBURGER } from '../constants/icons';
 import '../styles/header.scss';
 
 export default function Header() {
-  const [menuIsOpen, toggleMenu] = useState(false);
-
   return (
     <nav className='header'>
       <Link href='/'>
@@ -21,14 +20,11 @@ export default function Header() {
           src={ Logo }
         />
       </Link>
-      <div className='menu'>
-        <Button 
-          as='secondary' 
-          icon={ HAMBURGER } 
-          onClick={ () => toggleMenu(!menuIsOpen) }
-          text='Menu'
-        />
-        <div className={ classnames('menu-drawer', { 'is-open': menuIsOpen })} >
+      <Menu
+        text='Menu'
+        icon={ HAMBURGER }
+        align='right'
+        items={[
           <div className='menu-drawer-inner'>
             <p className='paragraph size-2 text-secondary'>Menu</p>
             <Button 
@@ -38,7 +34,6 @@ export default function Header() {
             />
             <Button 
               as='tertiary'
-              onClick={ () => console.log('click') }
               text='About'
               href='/about'
             />
@@ -47,10 +42,10 @@ export default function Header() {
               onClick={ () => console.log('click') }
               text='Sign in with Spotify'
             />
-          </div>
+          </div>,
           <Search />
-        </div>
-      </div>
+        ]}
+      />
     </nav>
   )
 }

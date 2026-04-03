@@ -126,6 +126,9 @@ const homeRankings2 = [
 ]
 
 export default function Home() {
+  const gridAreas = ['a', 'b', 'c'];
+  const gridAreas2 = ['b', 'a', 'c'];
+
   return (
     <Layout>
       <section className='section home-landing'>
@@ -138,22 +141,22 @@ export default function Home() {
       <section className='section home-rankings content'>
         <div className='home-rankings-title'>
           <h2 className='headline size-4'>Trending rankings</h2>
-          <Button as='tertiary' icon={ ARROW_RIGHT } text='Browse' href='/about' /> 
+          <Button as='tertiary' icon={ ARROW_RIGHT } text='Browse' href='/rankings' /> 
         </div>
         <div className='rankings-row'>
           { homeRankings.map((ranking, i) => (
-            <RankingCard key={ i } title={ ranking.title } ranking={ ranking.ranking } long={ ranking.isLong } />
+            <RankingCard key={ i } title={ ranking.title } ranking={ ranking.ranking } long={ ranking.isLong } gridArea={ gridAreas[i] } />
           ))}
         </div>
         <div className='rankings-row'>
           { homeRankings2.map((ranking, i) => (
-            <RankingCard key={ i } title={ ranking.title } ranking={ ranking.ranking } long={ ranking.isLong } />
+            <RankingCard key={ i } title={ ranking.title } ranking={ ranking.ranking } long={ ranking.isLong } gridArea={ gridAreas2[i] } />
           ))}
         </div>
       </section>
       <section className='section home-about content'>
         <div className='home-about-left'>
-          <h1 className='headline size-2'>We're music people</h1>
+          <h1 className='headline size-2'>What's this all about?</h1>
           <p className='paragraph size-1 text-secondary mb-2'>No point in making a ranking if nobody gets to see it. Tap any of the icons below to share to your favorite social media sites. No point in making a ranking if nobody gets to see it. Tap any of the icons below to share to your favorite social media sites. No point in making a ranking if nobody gets to see it. Tap any of the icons below to share to your favorite social media sites.</p>
           <Button as='secondary' icon={ ARROW_RIGHT } text='Learn more' href='/about' /> 
         </div>
